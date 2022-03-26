@@ -4,10 +4,10 @@
 // for eg search box, call api when user stops typing for 1000ms or something
 
 function debounce(cb, ms) {
-    let timeout;
+    let timer;
     return function (...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => cb.apply(this, args), ms);
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(() => cb(args), ms);
     };
 }
 
